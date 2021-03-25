@@ -1,6 +1,7 @@
 module.exports = {
   app: {
-    port: 3030
+    port: 3030,
+    baseUrl: 'http://localhost'
   },
   db: {
     host: '127.0.0.1',

@@ -11,6 +11,7 @@ Endpoint List:
     Response: Object containing created user 
 
 2. Login: POST /login
+
     Paylod: username, password
 
     Response: Success message and http only cookie is set

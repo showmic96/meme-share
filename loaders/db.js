@@ -12,5 +12,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = require('../models/user')(sequelize, DataTypes);
+db.memeImage = require('../models/meme-image')(sequelize, DataTypes);
 
 module.exports = db;
