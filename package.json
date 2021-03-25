@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/showmic96/meme-share/issues"
   },
-  "homepage": "https://github.com/showmic96/meme-share#readme"
+  "homepage": "https://github.com/showmic96/meme-share#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "require": "^2.4.20"
+  }
 }
