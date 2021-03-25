@@ -8,5 +8,12 @@ module.exports = {
     database: 'meme',
     username: 'showmic96',
     password: 'showmic96',
+  },
+  bcrypt: {
+    salt: 10,
+  },
+  jwt: {
+    secret: 'secret-key',
+    expiresIn: 1 * 60 * 60,
   }
 }
