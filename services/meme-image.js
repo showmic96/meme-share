@@ -17,7 +17,7 @@ const memeImageService = {
         const memeImageData = createdMemeImage.get({ plain: true });
         return {
           ...memeImageData,
-          sharableLink: `${config.app.baseUrl}:${config.app.port}/get-file/${fileName}`
+          sharableLink: `${config.app.baseUrl}:${config.app.port}/view/${fileName}`
         }
       });
   },
@@ -27,6 +27,32 @@ const memeImageService = {
       .then((memeImageData) => {
         const { views } = memeImageData.get({ plain: true });
         return memeImage.update({ views: views + 1 }, { where: { imageUrl } });
+      });
+  },
+
+  updateLike: ({ imageUrl, type }) => {
+    return memeImage.findOne({ where: { imageUrl } })
+      .then((memeData) => {
+        const { likes } = memeData.get({ plain: true });
+        let updatedLikes = likes + 1;
+
+        if (type === 'decrease') {
+          updatedLikes = likes - 1;
+        }
+
+        return memeImage.update({ likes: updatedLikes }, { where: { imageUrl } });
+      })
+      .then(() => {
+        return {
+          message: 'Update Successful'
+        };
+      });
+  },
+
+  getStatus: () => {
+    return memeImage.findAll()
+      .then((memeDataList) => {
+        return memeDataList.map((element) => element.get({ plain: true }));
       });
   }
 };

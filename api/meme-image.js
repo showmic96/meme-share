@@ -29,7 +29,7 @@ router.post('/create-meme', authMiddleware.verifyJwt, upload.any(), (req, res) =
 
 });
 
-router.get('/get-file/:fileName', (req, res) => {
+router.get('/view/:fileName', (req, res) => {
   const fileName = req.params.fileName;
   const imageUrl = `${config.app.baseUrl}:${config.app.port}/files/images/${fileName}.jpg`;
 
@@ -40,8 +40,34 @@ router.get('/get-file/:fileName', (req, res) => {
     .catch((error) => {
       res.status(error.status || 500)
         .send(error);
-    })
+    });
 
 });
+
+router.put('/update-like', (req, res) => {
+  const { imageUrl, type } = req.body;
+
+  return memeImageService.updateLike({ imageUrl, type })
+    .then((updateResponse) => {
+      res.status(200)
+        .send(updateResponse);
+    })
+    .catch((error) => {
+      res.status(error.status || 500)
+        .send(error);
+    });
+});
+
+router.get('/get-status', authMiddleware.verifyJwt, (req, res) => {
+  return memeImageService.getStatus()
+    .then((statusList) => {
+      res.status(200)
+        .send(statusList);
+    })
+    .catch((error) => {
+      res.status(error.status || 500)
+        .send(error);
+    });
+})
 
 module.exports = router;
