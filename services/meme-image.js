@@ -59,8 +59,8 @@ const memeImageService = {
   getImages: () => {
     return memeImage.findAll({
       order: [
-        ['views', 'ASC'],
-        ['likes', 'ASC']
+        ['views', 'DESC'],
+        ['likes', 'DESC']
       ]
     })
       .then((imageList) => {
