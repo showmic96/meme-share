@@ -1,0 +1,19 @@
+{
+  "name": "meme-share",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/showmic96/meme-share.git"
+  },
+  "author": "showmic96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/showmic96/meme-share/issues"
+  },
+  "homepage": "https://github.com/showmic96/meme-share#readme"
+}
