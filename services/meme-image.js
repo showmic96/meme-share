@@ -54,6 +54,24 @@ const memeImageService = {
       .then((memeDataList) => {
         return memeDataList.map((element) => element.get({ plain: true }));
       });
+  },
+
+  getImages: () => {
+    return memeImage.findAll({
+      order: [
+        ['views', 'ASC'],
+        ['likes', 'ASC']
+      ]
+    })
+      .then((imageList) => {
+        return imageList.map((imageElement) => {
+          const fileName = imageElement.imageUrl.split('/')[2].split('.')[0];
+          return {
+            ...imageElement.get({ plain: true }),
+            sharableLink: `${config.app.baseUrl}:${config.app.port}/view/${fileName}`
+          }
+        });
+      });
   }
 };
 

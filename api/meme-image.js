@@ -68,6 +68,18 @@ router.get('/get-status', authMiddleware.verifyJwt, (req, res) => {
       res.status(error.status || 500)
         .send(error);
     });
-})
+});
+
+router.get('/get-images', authMiddleware.verifyJwt, (req, res) => {
+  return memeImageService.getImages()
+    .then((imageList) => {
+      res.status(200)
+        .send(imageList);
+    })
+    .catch((error) => {
+      res.status(error.status || 500)
+        .send(error);
+    });
+});
 
 module.exports = router;
